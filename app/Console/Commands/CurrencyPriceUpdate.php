@@ -12,14 +12,14 @@ class CurrencyPriceUpdate extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'autocoin:price:update';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Get prices and update the database';
 
     /**
      * Create a new command instance.

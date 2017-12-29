@@ -12,7 +12,7 @@ class CurrencyPriceClear extends Command
      *
      * @var string
      */
-    protected $signature = 'currency:price:clear';
+    protected $signature = 'autocoin:price:clear';
 
     /**
      * The console command description.
