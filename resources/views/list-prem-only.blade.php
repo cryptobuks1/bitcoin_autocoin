@@ -15,6 +15,15 @@
 
 
 
+<div class="page-header">
+    <div class="btn-group btn-group-sm">
+        <a href="{{ url('/') }}" class="btn btn-primary">Detailed</a>
+        <a href="{{ url('/?premiumOnly=true') }}" class="btn btn-primary active">Condensed</a>
+    </div>
+    <div class="btn-group btn-group-sm">
+        <a href="{{ url('/?premiumOnly=true&activeOnly=true') }}" class="btn btn-primary">Active Only</a>
+    </div>
+</div>
 
 
 <table class="table table-fixed">
@@ -58,6 +67,9 @@
     <div class="btn-group btn-group-sm">
         <a href="{{ url('/') }}" class="btn btn-primary">Detailed</a>
         <a href="{{ url('/?premiumOnly=true') }}" class="btn btn-primary active">Condensed</a>
+    </div>
+    <div class="btn-group btn-group-sm">
+        <a href="{{ url('/?premiumOnly=true&activeOnly=true') }}" class="btn btn-primary">Active Only</a>
     </div>
 </div>
 

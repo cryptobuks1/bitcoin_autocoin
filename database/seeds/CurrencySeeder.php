@@ -17,11 +17,13 @@ class CurrencySeeder extends Seeder
                 'currency_code' => 'BTC',
                 'currency_name' => 'Bitcoin',
                 'order' => 1,
+                'is_active' => false
             ],
             [
                 'currency_code' => 'BCH',
                 'currency_name' => 'Bitcoin Cash',
                 'order' => 2,
+                'is_active' => false
             ],
             [
                 'currency_code' => 'ETH',
@@ -42,6 +44,7 @@ class CurrencySeeder extends Seeder
                 'currency_code' => 'DASH',
                 'currency_name' => 'Dash',
                 'order' => 6,
+                'is_active' => false,
             ],
             [
                 'currency_code' => 'ETC',
@@ -59,6 +62,22 @@ class CurrencySeeder extends Seeder
                 'currency_name' => 'Zcash',
                 'order' => 9,
             ],
+            [
+                'currency_code' => 'QTUM',
+                'currency_name' => 'Qtum',
+                'order' => 10,
+            ],
+            [
+                'currency_code' => 'BTG',
+                'currency_name' => 'Bitcoin Gold',
+                'order' => 11,
+                'is_active' => false
+            ],
+            [
+                'currency_code' => 'EOS',
+                'currency_name' => 'Eos',
+                'order' => 12
+            ]
         ];
 
         foreach($currencies as $currency){

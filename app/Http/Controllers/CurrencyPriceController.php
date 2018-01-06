@@ -13,11 +13,18 @@ class CurrencyPriceController extends Controller
     public function index()
     {
         $premiumOnly = (bool)request('premiumOnly');
+        $activeOnly = (bool)request('activeOnly');
 
-        $currencies = Currency
+        $currencies = $activeOnly?
+            Currency
             ::active()
             ->orderBy('order')
+            ->get():
+
+            Currency
+            ::orderBy('order')
             ->get();
+
 
 
         $records = CurrencyPriceRecord::with('currencyPriceRecordLines')
@@ -43,6 +50,15 @@ class CurrencyPriceController extends Controller
         return $premiumOnly?
             view('list-prem-only', compact('records', 'currencies')):
             view('list', compact('records', 'currencies'));
-
     }
+
+
+
+
+
+
+
 }
+
+
+

@@ -22,6 +22,11 @@ class ExchangeSeeder extends Seeder
                 'exchange_name' => 'Kraken',
                 'exchange_url' => 'https://www.kraken.com',
                 'exchange_base' => 'US'
+            ],
+            [
+                'exchange_name' => 'Binance',
+                'exchange_url' => 'https://www.binance.com',
+                'exchange_base' => 'HK'
             ]
         ];
 
