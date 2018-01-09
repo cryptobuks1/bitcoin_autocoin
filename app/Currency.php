@@ -18,6 +18,15 @@ class Currency extends Model
         return self::filterByCode($code)->first();
     }
 
+    public function getBaseExchangeAttribute()
+    {
+        return $this->exchanges->base_exchange;
+    }
+
+    public function getPremExchangeAttribute()
+    {
+        return $this->exchanges->prem_exchange;
+    }
 
 
     // Scope
@@ -31,6 +40,14 @@ class Currency extends Model
         $query->where('is_active', true);
     }
 
+
+
+
+    // Relations
+    public function exchanges()
+    {
+        return $this->hasOne(CurrencyExchange::class);
+    }
 
 
 

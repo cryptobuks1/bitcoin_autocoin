@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Price;
 
 use App\CurrencyPriceRecord;
+use App\Tasks\Price;
 use Illuminate\Console\Command;
 
-class CurrencyPriceClear extends Command
+class CurrencyPriceUpdate extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'autocoin:price:clear';
+    protected $signature = 'autocoin:price:update';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Clear currency price database';
+    protected $description = 'Get prices and update the database';
 
     /**
      * Create a new command instance.
@@ -38,6 +39,7 @@ class CurrencyPriceClear extends Command
      */
     public function handle()
     {
-        CurrencyPriceRecord::truncate();
+        $priceTasker = new Price();
+        $priceTasker->addCurrencyPriceRecord();
     }
 }

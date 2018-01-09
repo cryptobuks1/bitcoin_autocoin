@@ -2,8 +2,8 @@
 
 namespace App\Console;
 
-use App\Console\Commands\CurrencyPriceClear;
-use App\Console\Commands\CurrencyPriceUpdate;
+use App\Console\Commands\Price\CurrencyPriceClear;
+use App\Console\Commands\Price\CurrencyPriceUpdate;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

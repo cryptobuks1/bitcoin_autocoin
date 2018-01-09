@@ -17,11 +17,11 @@
 
 <div class="page-header">
     <div class="btn-group btn-group-sm">
-        <a href="{{ url('/') }}" class="btn btn-primary">Detailed</a>
-        <a href="{{ url('/?premiumOnly=true') }}" class="btn btn-primary active">Condensed</a>
+        <a href="{{ url('/price') }}" class="btn btn-primary">Detailed</a>
+        <a href="{{ url('/price?premiumOnly=true') }}" class="btn btn-primary active">Condensed</a>
     </div>
     <div class="btn-group btn-group-sm">
-        <a href="{{ url('/?premiumOnly=true&activeOnly=true') }}" class="btn btn-primary">Active Only</a>
+        <a href="{{ url('/price?premiumOnly=true&activeOnly=true') }}" class="btn btn-primary">Active Only</a>
     </div>
 </div>
 
@@ -30,8 +30,6 @@
     <thead>
     <tr>
         <th>Time</th>
-        <th>Base</th>
-        <th>Prem</th>
         @foreach($currencies as $currency)
             <th>{{ $currency->currency_code }}</th>
         @endforeach
@@ -42,8 +40,6 @@
     @foreach($records as $record)
         <tr>
             <td>{{ $record->recorded_at->format('Y/n/j_g:i:sA') }}</td>
-            <td>{{ $record->baseExchange->exchange_name }}</td>
-            <td>{{ $record->premExchange->exchange_name }}</td>
             @foreach($currencies as $currency)
                 @php
                     $line = isset($record->lines[$currency->currency_code])?
@@ -65,11 +61,11 @@
 <hr>
 <div class="page-footer">
     <div class="btn-group btn-group-sm">
-        <a href="{{ url('/') }}" class="btn btn-primary">Detailed</a>
-        <a href="{{ url('/?premiumOnly=true') }}" class="btn btn-primary active">Condensed</a>
+        <a href="{{ url('/price') }}" class="btn btn-primary">Detailed</a>
+        <a href="{{ url('/price?premiumOnly=true') }}" class="btn btn-primary active">Condensed</a>
     </div>
     <div class="btn-group btn-group-sm">
-        <a href="{{ url('/?premiumOnly=true&activeOnly=true') }}" class="btn btn-primary">Active Only</a>
+        <a href="{{ url('/price?premiumOnly=true&activeOnly=true') }}" class="btn btn-primary">Active Only</a>
     </div>
 </div>
 

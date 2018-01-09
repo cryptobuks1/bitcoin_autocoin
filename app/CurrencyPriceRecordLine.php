@@ -9,6 +9,8 @@ class CurrencyPriceRecordLine extends Model
     protected $fillable = [
         'currency_price_record_id',
         'currency_id',
+        'base_exchange_id',
+        'prem_exchange_id',
         'base_currency_price',
         'prem_currency_price',
         'prem_amount',
@@ -42,6 +44,16 @@ class CurrencyPriceRecordLine extends Model
     public function currency()
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    public function base_exchange()
+    {
+        return $this->belongsTo(Exchange::class);
+    }
+
+    public function prem_exchange()
+    {
+        return $this->belongsTo(Exchange::class);
     }
 
 

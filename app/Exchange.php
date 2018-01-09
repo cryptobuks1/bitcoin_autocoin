@@ -8,6 +8,7 @@ class Exchange extends Model
 {
     protected $fillable = [
         'exchange_name',
+        'exchange_code',
         'exchange_url',
         'exchange_base'
     ];

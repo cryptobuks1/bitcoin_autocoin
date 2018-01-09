@@ -17,11 +17,11 @@
 <div class="page-header">
     <div class="page-footer">
         <div class="btn-group btn-group-sm">
-            <a href="{{ url('/') }}" class="btn btn-primary active">Detailed</a>
-            <a href="{{ url('/?premiumOnly=true') }}" class="btn btn-primary">Condensed</a>
+            <a href="{{ url('/price') }}" class="btn btn-primary active">Detailed</a>
+            <a href="{{ url('/price?premiumOnly=true') }}" class="btn btn-primary">Condensed</a>
         </div>
         <div class="btn-group btn-group-sm">
-            <a href="{{ url('/?activeOnly=true') }}" class="btn btn-primary">Active Only</a>
+            <a href="{{ url('/price?activeOnly=true') }}" class="btn btn-primary">Active Only</a>
         </div>
     </div>
 
@@ -32,21 +32,20 @@
     <thead>
     <tr>
         <th rowspan="3" style="vertical-align: top;">Time</th>
-        <th rowspan="3" style="vertical-align: top;">Base&nbsp;Ex.</th>
-        <th rowspan="3" style="vertical-align: top;">Prem&nbsp;Ex.</th>
         @foreach($currencies as $currency)
-        <th colspan="21" style="vertical-align: top;">{{ $currency->currency_name }}&nbsp;({{$currency->currency_code}})</th>
+        <th colspan="23" style="vertical-align: top;">{{ $currency->currency_name }}&nbsp;({{$currency->currency_code}})</th>
         @endforeach
-        <th rowspan="3" style="vertical-align: top;">USD/KRW</th>
     </tr>
     <tr>
         @foreach($currencies as $currency)
+        <th rowspan="2" style="vertical-align: top;">Base&nbsp;Ex.</th>
         <th rowspan="2" style="vertical-align: top;">Base&nbsp;Price</th>
         <th colspan="6" style="vertical-align: top;">Base&nbsp;Price&nbsp;Standard&nbsp;Deviation&nbsp;%</th>
-        <th rowspan="2" style="vertical-align: top;">Premium&nbsp;Price</th>
-        <th colspan="6" style="vertical-align: top;">Premium&nbsp;Price&nbsp;Standard&nbsp;Deviation&nbsp;%</th>
-        <th rowspan="2" style="vertical-align: top;">Premium&nbsp;Rate</th>
-        <th colspan="6" style="vertical-align: top;">Premium&nbsp;Rate&nbsp;Standard&nbsp;Deviation&nbsp;%</th>
+        <th rowspan="2" style="vertical-align: top;">Prem&nbsp;Ex.</th>
+        <th rowspan="2" style="vertical-align: top;">Prem&nbsp;Price</th>
+        <th colspan="6" style="vertical-align: top;">Prem&nbsp;Price&nbsp;Standard&nbsp;Deviation&nbsp;%</th>
+        <th rowspan="2" style="vertical-align: top;">Prem&nbsp;Rate</th>
+        <th colspan="6" style="vertical-align: top;">Prem&nbsp;Rate&nbsp;Standard&nbsp;Deviation&nbsp;%</th>
         @endforeach
     </tr>
     <tr>
@@ -77,14 +76,13 @@
     @foreach($records as $record)
         <tr>
             <td>{{ $record->recorded_at->format('Y/n/j_g:i:sA') }}</td>
-            <td>{{ $record->baseExchange->exchange_name }}</td>
-            <td>{{ $record->premExchange->exchange_name }}</td>
             @foreach($currencies as $currency)
                 @php
                     $line = isset($record->lines[$currency->currency_code])?
                         $record->lines[$currency->currency_code]:false
                 @endphp
                 @if($line)
+                    <td>{{ $line->base_exchange->exchange_name }}</td>
                     <td>${{number_format($line->base_currency_price, 2)}}</td>
 
                     <td>{{ $line->sd_bp_5? $line->sd_bp_5 * 100 : '---' }}%</td>
@@ -94,6 +92,7 @@
                     <td>{{ $line->sd_bp_120? $line->sd_bp_120 * 100 : '---' }}%</td>
                     <td>{{ $line->sd_bp_240? $line->sd_bp_240 * 100 : '---' }}%</td>
 
+                    <td>{{ $line->prem_exchange->exchange_name }}</td>
                     <td>${{number_format($line->prem_currency_price, 2)}}</td>
 
                     <td>{{ $line->sd_pp_5? $line->sd_pp_5 * 100 : '---' }}%</td>
@@ -118,7 +117,6 @@
                     <td>---</td>
                 @endif
             @endforeach
-            <td>{{ $record->exchange_rate }}</td>
         </tr>
     @endforeach
     </tbody>
@@ -132,11 +130,11 @@
 
 <div class="page-footer">
     <div class="btn-group btn-group-sm">
-        <a href="{{ url('/') }}" class="btn btn-primary active">Detailed</a>
-        <a href="{{ url('/?premiumOnly=true') }}" class="btn btn-primary">Condensed</a>
+        <a href="{{ url('/price') }}" class="btn btn-primary active">Detailed</a>
+        <a href="{{ url('/price?premiumOnly=true') }}" class="btn btn-primary">Condensed</a>
     </div>
     <div class="btn-group btn-group-sm">
-        <a href="{{ url('/?activeOnly=true') }}" class="btn btn-primary">Active Only</a>
+        <a href="{{ url('/price?activeOnly=true') }}" class="btn btn-primary">Active Only</a>
     </div>
 
 </div>

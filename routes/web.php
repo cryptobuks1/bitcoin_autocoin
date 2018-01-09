@@ -3,13 +3,21 @@
 use App\Currency;
 use App\CurrencyPriceRecord;
 
-Route::get('/', 'CurrencyPriceController@index');
+Route::get('/price', 'CurrencyPriceController@index');
 
+
+
+
+
+
+// For test only
+Route::get('/price/add', 'CurrencyPriceController@addRecord');
 
 
 Route::get('/test', function(){
 
-    dd(\App\CurrencyPriceRecord::addRecord());
+
+    //dd(\App\CurrencyPriceRecord::addRecord());
 
     /*$currencies = Currency
         //::active()

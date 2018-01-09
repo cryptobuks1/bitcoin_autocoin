@@ -17,6 +17,7 @@ class CreateExchangesTable extends Migration
             $table->increments('id');
 
             $table->string('exchange_name');
+            $table->string('exchange_code');
             $table->string('exchange_url')->nullable();
             $table->string('exchange_base');
 

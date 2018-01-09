@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Currency;
 use App\CurrencyPriceRecord;
+use App\Tasks\Price;
 use Illuminate\Http\Request;
 
 class CurrencyPriceController extends Controller
 {
-
-
     public function index()
     {
         $premiumOnly = (bool)request('premiumOnly');
@@ -24,7 +24,6 @@ class CurrencyPriceController extends Controller
             Currency
             ::orderBy('order')
             ->get();
-
 
 
         $records = CurrencyPriceRecord::with('currencyPriceRecordLines')
@@ -51,6 +50,18 @@ class CurrencyPriceController extends Controller
             view('list-prem-only', compact('records', 'currencies')):
             view('list', compact('records', 'currencies'));
     }
+
+
+
+
+    public function addRecord()
+    {
+        $priceTasker = new Price();
+        $priceTasker->addCurrencyPriceRecord();
+    }
+
+
+
 
 
 

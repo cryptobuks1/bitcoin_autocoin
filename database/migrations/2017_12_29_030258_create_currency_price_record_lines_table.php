@@ -24,6 +24,15 @@ class CreateCurrencyPriceRecordLinesTable extends Migration
             $table->foreign('currency_id')
                 ->references('id')->on('currencies')->onDelete('cascade');
 
+            $table->integer('base_exchange_id')->unsigned();
+            $table->foreign('base_exchange_id')
+                ->references('id')->on('exchanges')->onDelete('cascade');
+
+            $table->integer('prem_exchange_id')->unsigned();
+            $table->foreign('prem_exchange_id')
+                ->references('id')->on('exchanges')->onDelete('cascade');
+
+
             $table->double('base_currency_price', 20, 6);
 
             $table->double('prem_currency_price', 20, 6);

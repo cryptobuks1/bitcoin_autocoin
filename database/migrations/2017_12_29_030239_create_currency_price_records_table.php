@@ -16,17 +16,6 @@ class CreateCurrencyPriceRecordsTable extends Migration
         Schema::create('currency_price_records', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('recorded_at');
-
-            $table->integer('base_exchange_id')->unsigned();
-            $table->foreign('base_exchange_id')
-                ->references('id')->on('exchanges')->onDelete('cascade');
-
-            $table->integer('prem_exchange_id')->unsigned();
-            $table->foreign('prem_exchange_id')
-                ->references('id')->on('exchanges')->onDelete('cascade');
-
-            $table->double('exchange_rate', 20, 2);
-
             $table->timestamps();
         });
     }
